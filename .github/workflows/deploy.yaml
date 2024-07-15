@@ -8,7 +8,7 @@ env:
   CURRENT_BRANCH: ${{ github.ref_name =='production' && 'production' || 'master' }}
   GCR_HOST: us.gcr.io
   GOOGLE_PROJECT_ID: babbage-private
-  GCR_IMAGE_NAME: overlay-services
+  GCR_IMAGE_NAME: overlay-example-backend
 jobs:
   build:
     name: Deploy
