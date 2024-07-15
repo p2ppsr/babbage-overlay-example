@@ -7,6 +7,7 @@ import { MongoClient } from 'mongodb'
 import https from 'https'
 import Knex from 'knex'
 import knexfile from '../knexfile.js'
+import { spawn } from 'child_process'
 import { HelloWorldTopicManager } from './helloworld-services/HelloWorldTopicManager.js'
 import { HelloWorldLookupService } from './helloworld-services/HelloWorldLookupService.js'
 import { HelloWorldStorage } from './helloworld-services/HelloWorldStorage.js'
@@ -377,6 +378,9 @@ initialization()
   .then(() => {
     console.log(PORT)
     app.listen(PORT, () => {
+      if (NODE_ENV !== 'development') {
+        spawn('nginx', [], { stdio: [process.stdin, process.stdout, process.stderr] })
+      }
       (async () => {
         console.log(`BSV Overlay Services Engine is listening on port ${PORT as string}`)
         // Make sure we have advertisements for all the topics / lookup services we support.
