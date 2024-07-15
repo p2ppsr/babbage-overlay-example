@@ -1,6 +1,6 @@
 # Overlay Example
 
-This repository contains an example deployment of the BSV Overlay Services Engine. It demonstrates a basic configuration that can be modified, extended, and customized to fit various use cases.
+This repository contains an example Google Cloud deployment of the BSV Overlay Services Engine. It demonstrates a basic configuration that can be modified, extended, and customized to fit various use cases.
 
 ## Overview
 
