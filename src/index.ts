@@ -41,6 +41,10 @@ const {
   MIGRATE_KEY
 } = process.env
 
+const HTTP_PORT = NODE_ENV !== 'development'
+  ? 3000
+  : (PORT !== undefined ? PORT : (PORT !== undefined ? PORT : 8080))
+
 // Configure with custom URLs specific to your supported topics.
 const SLAP_TRACKERS = [`https://${NODE_ENV === 'production' ? '' : 'staging-'}overlay.babbage.systems`]
 const SHIP_TRACKERS = [`https://${NODE_ENV === 'production' ? '' : 'staging-'}overlay.babbage.systems`]
@@ -376,13 +380,13 @@ app.use((req, res) => {
 // Start your Engines!
 initialization()
   .then(() => {
-    console.log(PORT)
-    app.listen(PORT, () => {
+    console.log(HTTP_PORT)
+    app.listen(HTTP_PORT, () => {
       if (NODE_ENV !== 'development') {
         spawn('nginx', [], { stdio: [process.stdin, process.stdout, process.stderr] })
       }
       (async () => {
-        console.log(`BSV Overlay Services Engine is listening on port ${PORT as string}`)
+        console.log(`BSV Overlay Services Engine is listening on port ${HTTP_PORT as string}`)
         // Make sure we have advertisements for all the topics / lookup services we support.
         try {
           await engine.syncAdvertisements()
