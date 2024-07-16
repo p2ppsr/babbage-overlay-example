@@ -32,13 +32,11 @@ jobs:
           SERVICE: ${{ env.CURRENT_BRANCH =='production' && 'prod-overlay-example-backend' || 'staging-overlay-example-backend' }}
           BSV_NETWORK: ${{ env.CURRENT_BRANCH =='production' && 'mainnet' || 'testnet' }}
           HOSTING_DOMAIN: ${{          env.CURRENT_BRANCH =='production' && secrets.PROD_HOSTING_DOMAIN || secrets.STAGING_HOSTING_DOMAIN }}
-          NODE_ENV: ${{                env.CURRENT_BRANCH =='production' && secrets.PROD_NODE_ENV || secrets.STAGING_NODE_ENV }}
+          NODE_ENV: ${{                ${{ env.CURRENT_BRANCH =='production' && 'production' || 'staging' }}
           KNEX_DB_CONNECTION: ${{      env.CURRENT_BRANCH =='production' && secrets.PROD_KNEX_DB_CONNECTION || secrets.STAGING_KNEX_DB_CONNECTION }}
-          KNEX_DB_CLIENT: ${{ secrets.KNEX_DB_CLIENT }}
           MIGRATE_KEY: ${{             env.CURRENT_BRANCH =='production' && secrets.PROD_MIGRATE_KEY || secrets.STAGING_MIGRATE_KEY }}
           SERVER_PRIVATE_KEY: ${{      env.CURRENT_BRANCH =='production' && secrets.PROD_SERVER_PRIVATE_KEY || secrets.STAGING_SERVER_PRIVATE_KEY }}
-          DB_CONNECTION: ${{    env.CURRENT_BRANCH =='production' && secrets.PROD_DB_CONNECTION || secrets.STAGING_DB_CONNECTION }}
-          DB_NAME: ${{    env.CURRENT_BRANCH =='production' && secrets.PROD_DB_NAME || secrets.STAGING_DB_NAME }}
+          DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
           TAAL_API_KEY: ${{    env.CURRENT_BRANCH =='production' && secrets.PROD_TAAL_API_KEY || secrets.STAGING_TAAL_API_KEY }}
           DOJO_URL: ${{                env.CURRENT_BRANCH =='production' && secrets.PROD_DOJO_URL || secrets.STAGING_DOJO_URL }}
       - uses: google-github-actions/auth@v1

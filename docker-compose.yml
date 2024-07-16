@@ -13,7 +13,6 @@ services:
       BSV_NETWORK: 'testnet'
       PORT: 3103
       SERVER_PRIVATE_KEY: 'f8b4b466417e3fede5f95cb0651fb6371c3c9c0753a3e15c1c30155461d03c18' # Example Key - Use your own key!
-      KNEX_DB_CLIENT: mysql
       KNEX_DB_CONNECTION: '{"port":3113,"host":"overlay-services-mysql","user":"root","password":"test","database":"overlay-services"}'
       NODE_ENV: development
       MIGRATE_KEY: 'my-grate-key'
