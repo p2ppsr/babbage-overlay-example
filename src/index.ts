@@ -22,6 +22,7 @@ import { UHRPStorage } from './data-integrity-services/UHRPStorage.js'
 import { UHRPTopicManager } from './data-integrity-services/UHRPTopicManager.js'
 import { UHRPLookupService } from './data-integrity-services/UHRPLookupService.js'
 import { SyncConfiguration } from '@bsv/overlay/SyncConfiguration.ts'
+import CombinatorialChainTracker from './CombinatorialChainTracker.js'
 
 const knex = Knex(knexfile.development)
 const app = express()
@@ -50,7 +51,8 @@ const knownDeployedOSN = `https://${NODE_ENV === 'production' ? '' : 'staging-'}
 const SLAP_TRACKERS = [knownDeployedOSN]
 const SHIP_TRACKERS = [knownDeployedOSN]
 const SYNC_CONFIGURATION: SyncConfiguration = {
-  tm_helloworld: [knownDeployedOSN]
+  tm_helloworld: [knownDeployedOSN],
+  tm_uhrp: false
 }
 
 // Initialization the overlay engine
@@ -105,11 +107,13 @@ const initialization = async () => {
           ls_slap: new SLAPLookupService(slapStorage)
         },
         new KnexStorage(knex),
-        new WhatsOnChain(
-          NODE_ENV === 'production' ? 'main' : 'test',
-          {
-            httpClient: new NodejsHttpClient(https)
-          }),
+        new CombinatorialChainTracker([
+          new WhatsOnChain(
+            NODE_ENV === 'production' ? 'main' : 'test',
+            {
+              httpClient: new NodejsHttpClient(https)
+            })
+        ]),
         HOSTING_DOMAIN as string,
         SHIP_TRACKERS,
         SLAP_TRACKERS,
