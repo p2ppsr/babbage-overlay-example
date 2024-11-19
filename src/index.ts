@@ -393,7 +393,7 @@ initialization()
       }
       (async () => {
         console.log(`BSV Overlay Services Engine is listening on port ${HTTP_PORT as string}`)
-        // Make sure we have advertisements for all the topics / lookup services we support.
+        // Make sure we have advertisements for all the topics / lookup services we support
         try {
           await engine.syncAdvertisements()
         } catch (error) {
