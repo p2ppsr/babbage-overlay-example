@@ -52,7 +52,6 @@ const SLAP_TRACKERS = [knownDeployedOSN]
 const SHIP_TRACKERS = [knownDeployedOSN]
 const SYNC_CONFIGURATION: SyncConfiguration = {
   tm_helloworld: [knownDeployedOSN],
-  tm_helloOverlay: [knownDeployedOSN],
   tm_uhrp: false
 }
 
@@ -97,14 +96,12 @@ const initialization = async () => {
       engine = new Engine(
         {
           tm_helloworld: new HelloWorldTopicManager(),
-          tm_helloOverlay: new HelloWorldTopicManager(),
           tm_uhrp: new UHRPTopicManager(),
           tm_ship: new SHIPTopicManager(),
           tm_slap: new SLAPTopicManager()
         },
         {
           ls_helloworld: new HelloWorldLookupService(helloStorage),
-          ls_helloOverlay: new HelloWorldLookupService(helloStorage),
           ls_uhrp: new UHRPLookupService(uhrpStorage),
           ls_ship: new SHIPLookupService(shipStorage),
           ls_slap: new SLAPLookupService(slapStorage)
