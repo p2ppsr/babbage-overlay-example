@@ -21,12 +21,15 @@
     "@bsv/overlay": "^0.1.15",
     "@bsv/sdk": "^1.1.30",
     "body-parser": "^1.20.2",
+    "cwi-external-services": "^0.4.73",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "knex": "^3.1.0",
     "mongodb": "^5.7.0",
     "mysql2": "^3.10.0",
-    "ninja-base": "^0.3.67"
+    "ninja-base": "^0.3.67",
+    "pushdrop": "^0.1.64",
+    "uhrp-url": "^0.1.10"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.5",
