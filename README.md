@@ -16,6 +16,15 @@ The Overlay Services Engine enables dynamic tracking and management of UTXO-base
 - A simple setup for local development and maximum customizability.
 - Adherence to BRC standards for endpoint interoperability and synchronization with other hosts.
 
+## Benchmarks
+The system performance was benchmarked using the test files located under tests/benchmarks. The beefs.json file contains the transaction data for 1000 HelloWorld tokens that can be submitted into the overlay.
+
+Additionally, there is a function available for generating and saving your own BEEF data. For more detailed information, refer to the following documents:
+
+[Benchmark Results](./tests/benchmarks/BOSE_BENCHMARKS.md)
+
+[Guide to Running Your Own Overlay Service on AWS EC2](./tests//benchmarks/BOSE_AWS_EC2_GUIDE.md)
+
 ## Getting Started
 
 ### Prerequisites
@@ -48,6 +57,7 @@ MIGRATE_KEY="my-grate-key"
 DB_CONNECTION='mongodb://localhost:27017'
 TAAL_API_KEY='testnet_your_key_here'
 DOJO_URL='https://staging-dojo.babbage.systems' # Staging Dojo configured for testnet
+KNEX_DB_CONNECTION= "mysql://overlayAdmin:overlay123@localhost:3306/overlay" # Example MYSQL connection string
 ```
 Adjust DB_CONNECTION as necessary if your MongoDB instance has specific user credentials or is hosted remotely.
 
