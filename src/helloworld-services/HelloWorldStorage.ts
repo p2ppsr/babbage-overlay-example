@@ -100,6 +100,8 @@ export class HelloWorldStorage {
 
     const sortDirection = sortOrder === 'asc' ? 1 : -1
 
+    console.log('debug query', query)
+
     return await this.records.find(query)
       .sort({ createdAt: sortDirection })
       .skip(skip)
