@@ -1,5 +1,7 @@
 # Overlay Example
 
+> **Status:** Historical Babbage overlay example. For new overlay work, prefer the current BSV Blockchain overlay repositories: [`overlay-express-examples`](https://github.com/bsv-blockchain/overlay-express-examples), [`overlay-express`](https://github.com/bsv-blockchain/overlay-express), and [`overlay-services`](https://github.com/bsv-blockchain/overlay-services).
+
 This repository contains an example Google Cloud deployment of the BSV Overlay Services Engine. It demonstrates a basic configuration that can be modified, extended, and customized to fit various use cases.
 
 ## Overview
@@ -36,8 +38,8 @@ Ensure Node.js, MySQL, and MongoDB are installed on your machine. MongoDB and My
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/bitcoin-sv/overlay-example.git
-   cd overlay-example
+   git clone https://github.com/p2ppsr/babbage-overlay-example.git
+   cd babbage-overlay-example
 
 2. Install dependencies:
 
