@@ -1,18 +1,12 @@
-FROM node:16-alpine
-
-# Install nginx
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.3/main" >> /etc/apk/repositories && \
-    apk add --update nginx && \
-    rm -rf /var/cache/apk/* && \
-    chown -R nginx:www-data /var/lib/nginx
-
+FROM node:22.23.4-alpine
+RUN apk add --no-cache nginx bash && \
+    install -d -o nginx -g nginx /var/lib/nginx /run/nginx
 COPY ./nginx.conf /etc/nginx/nginx.conf
-
 EXPOSE 8080
 WORKDIR /app
+ENV PATH="/app/node_modules/.bin:${PATH}"
+COPY package.json package-lock.json ./
+RUN npm ci --include=optional
 COPY . .
-# Install dependencies including TypeScript and Knex globally
-RUN npm install && \
-    npm install -g typescript knex && \
-    npm run build
+RUN npm run build
 CMD [ "sh", "scripts/start.sh"]

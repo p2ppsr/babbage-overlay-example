@@ -210,3 +210,17 @@ Fork and modify this repository to suit your needs. You can:
 ## License
 
 This repository is licensed under the Open BSV License.
+
+
+## October2026 Node security maintenance
+
+The retained Docker recipe uses Node22.23.4, its frozen dependency lock and
+locked local TypeScript/Knex tools. The expired Alpine3.3 repository and global
+unpinned build tools are removed. Build context excludes local dependencies,
+environment files, npm credentials and generated service descriptions; the
+legacy description helper withholds credential-bearing output.
+
+Obsolete Cloud Run automation is archived at
+`docs/legacy-cloud-run-deploy.yaml.txt`. Source/shell syntax and a frozen Linux
+image/native Node/Brotli/crypto check run in hosted CI. No application/database/
+payment or production-restoration acceptance is claimed by this source update.
