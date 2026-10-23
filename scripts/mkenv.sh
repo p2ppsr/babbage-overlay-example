@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+umask 077
 
 # Memory limit for the container
 MEMORY_LIMIT="4Gi" # Example: 512Mi, 1Gi, etc.
@@ -32,5 +34,4 @@ perl -E'
           value: \x27$ENV{$_}\x27" for @ARGV;
 ' NODE_ENV BSV_NETWORK HOSTING_DOMAIN KNEX_DB_CONNECTION MIGRATE_KEY SERVER_PRIVATE_KEY DB_CONNECTION TAAL_API_KEY DOJO_URL >> $1
 
-echo "Built! Contents of $1:"
-cat $1
+echo "Service description written; contents withheld."
